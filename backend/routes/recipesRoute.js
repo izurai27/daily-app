@@ -19,9 +19,11 @@ router.route('/add').post((req,res)=>{
   const source = req.body.source
   const ytLink = req.body.ytLink
   const ingredients = req.body.ingredients
+  const occasion = req.body.occasion
+  const mealtype = req.body.mealtype
 
   const newRecipe = new recipe({
-    title, thumb, portion, cookingStyle, instruction, source, ytLink, ingredients
+    title, thumb, portion, cookingStyle, instruction, source, ytLink, ingredients, occasion, mealtype
   })
 
   newRecipe.save()
@@ -42,5 +44,30 @@ router.route('/id=:id').delete((req,res)=>{
   .then(() => res.json('recipe successfully deleted'))
   .catch(err => res.status(400).json('error: '+err))
 })
+
+//command to update by id
+router.route('/update/id=:id').post((req,res) => {
+  recipe.findById(req.params.id)
+  .then(recipe => {
+    recipe.title = req.body.title
+    recipe.thumb = req.body.thumb
+    recipe.portion = req.body.portion
+    recipe.cookingStyle = req.body.cookingStyle
+    recipe.instruction = req.body.instruction
+    recipe.source = req.body.source
+    recipe.ytLink = req.body.ytLink
+    recipe.ingredients = req.body.ingredients
+    recipe.occasion = req.body.occasion
+    recipe.mealtype = req.body.mealtype
+
+    recipe.save()
+    .then(() => res.json(`recipe id = ${req.params.id} successfully updated`))
+    .catch(err => res.status(400).json('error: '+err))
+    })
+
+    .catch(err => res.status(400).json('Error:'+err))
+
+  })
+
 
 module.exports = router
