@@ -16,8 +16,8 @@ const recipeSchema = new schema ({
   source : {type:String, require : true},
   ytLink : {type:String, require: true},
   ingredients : [detailIngredients],
-  occasion : [String],
-  mealtype : [String]
+  occasion : [String], //hari raya, sarapan, malam, sedang hujan, bulan puasa, dll
+  mealtype : [String] //lauk, sayur, dessert, buah
  })
 
 
