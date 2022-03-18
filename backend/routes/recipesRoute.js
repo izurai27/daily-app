@@ -21,9 +21,10 @@ router.route('/add').post((req,res)=>{
   const ingredients = req.body.ingredients
   const occasion = req.body.occasion
   const mealtype = req.body.mealtype
+  const origin = req.body.origin
 
   const newRecipe = new recipe({
-    title, thumb, portion, cookingStyle, instruction, source, ytLink, ingredients, occasion, mealtype
+    title, thumb, portion, cookingStyle, instruction, source, ytLink, ingredients, occasion, mealtype,origin
   })
 
   newRecipe.save()
@@ -59,6 +60,7 @@ router.route('/update/id=:id').post((req,res) => {
     recipe.ingredients = req.body.ingredients
     recipe.occasion = req.body.occasion
     recipe.mealtype = req.body.mealtype
+    recipe.origin = req.body.origin
 
     recipe.save()
     .then(() => res.json(`recipe id = ${req.params.id} successfully updated`))
