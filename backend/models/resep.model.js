@@ -7,6 +7,11 @@ const detailIngredients = new schema ({
 	measurement : {type:String, require: true}
 })
 
+const ingredientsInstructionSchema = new schema({
+  description: {type:String, require:true} ,
+  detail: [String]
+})
+
 const recipeSchema = new schema ({
   title : { type: String, require : true},
   thumb : {type: String, require : true},
@@ -17,11 +22,10 @@ const recipeSchema = new schema ({
   ytLink : {type:String, require: true},
   ingredients : [detailIngredients],
   occasion : [String], //hari raya, sarapan, malam, sedang hujan, bulan puasa, dll
-  mealtype : [String],
-  origin: String //lauk, sayur, dessert, buah
- })
-
-
+  mealtype : [String], //lauk, sayur, dessert, buah
+  origin: String,
+  ingredientsInstruction: [ingredientsInstructionSchema]
+})
 
 const recipe = mongoose.model('recipe', recipeSchema);
 module.exports = recipe;
