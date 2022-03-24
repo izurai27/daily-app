@@ -4,7 +4,7 @@ import Gap from './gap'
 
 const Login = () => {
   return (
-    <div className='container'>
+    <div className='container-sm'>
 
       <form className='container-sm'>
         <div className="mb-3">

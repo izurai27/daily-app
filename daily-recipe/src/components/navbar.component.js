@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import './navbar.css'
+import logo from '../images/logo.svg'
 
 const Navbar = () =>{
   const [show,setShow] = useState('true')
     return (
-      <nav className = 'navbar navbar-dark bg-dark navbar-expand-sm px-3'>
-        <Link to='/' className='navbar-brand'>daily Recipe</Link>
+      <nav className = 'navbar navbar-dark navbar-expand-sm px-3' style={{backgroundColor:'#123559'}}>
+        <Link to='/' className='navbar-brand'><img src={logo} alt="logo" style={{height:"30px", border:"none"}}/></Link>
         <button className="navbar-toggler border border-info text-info" onClick={() => setShow(!show)} >
           <span className="navbar-toggler-icon"></span>
         </button>
