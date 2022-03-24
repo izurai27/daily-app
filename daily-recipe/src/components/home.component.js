@@ -1,13 +1,14 @@
 import React from 'react'
-
-const RecipeList = () => {
-  return <div>ini recipelist</div>
-}
-
+import RecipeList from './RecipeList.component'
+import Hero from './Hero.component'
 
 const Home = () => {
   return (
-    <RecipeList/>
+    <>
+      <Hero/>
+      <RecipeList/>
+    
+    </>
   )
 }
 
