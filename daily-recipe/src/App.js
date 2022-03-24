@@ -6,6 +6,7 @@ import Home from './components/home.component';
 import ListBelanja from './components/ListBelanja.component';
 import MenuBelanja from './components/menuBelanja.component';
 import Login from './components/login.component';
+import Register from './components/Register.component';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
           <Route path='/' exact element={<Home/>}/>
           <Route path='/list' element={<ListBelanja/>}/>
           <Route path='/menuBelanja' element={<MenuBelanja/>}/>
-          <Route path='/login' element={<Login/>}/>
+          <Route path='/user/login' element={<Login/>}/>
+          <Route path='/user/register' element={<Register/>}/>
         </Routes>
         
 
