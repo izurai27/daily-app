@@ -50,21 +50,31 @@ const Register = () => {
     setkonfirmPasswrd(e.target.value)
   }
   
-  const handleRegisterBtn = () => {
+  const handleRegisterBtn = async () => {
     console.log(email, passwrd ,konfirmPasswrd )
+    const emailReg = email;
+    const passReg = passwrd;
 
-    createUserWithEmailAndPassword(auth, email, passwrd)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log('user: '+userCredential.user)
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('err ='+errorCode,errorMessage)
-      });
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, emailReg, passReg)
+      console.log(userCredential)
+    } catch (error) {
+      console.log(error)
+      // showLoginError(error)
+    }
+
+    
+      // .then(res => {
+      //   // Signed in 
+      //   // const user = userCredential.user;
+      //   console.log(res)
+      //   // ...
+      // })
+      // .catch((error) => {
+      //   const errorCode = error.code;
+      //   const errorMessage = error.message;
+      //   console.log('err ='+errorCode,errorMessage)
+      // });
   }
 
  
