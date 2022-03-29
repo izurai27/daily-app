@@ -7,7 +7,8 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-import { getAuth,onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
+import '../components/register.css';
 
 
 
@@ -35,7 +36,6 @@ const auth = getAuth(app);
 const Register = () => {
   const [email,setEmail] = useState('')
   const [passwrd,setPasswrd] = useState('')
-  const [konfirmPasswrd, setkonfirmPasswrd] = useState('')
   
   const handleInputEmail = (e) => {
     setEmail (e.target.value);
@@ -45,38 +45,31 @@ const Register = () => {
   const handlepasswrd = (e) => {
     setPasswrd(e.target.value)
   }
-  
-  const handleKonfirmpasswrd = (e) => {
-    setkonfirmPasswrd(e.target.value)
-  }
-  
+     
   const handleRegisterBtn = async () => {
-    console.log(email, passwrd ,konfirmPasswrd )
+    // console.log(email, passwrd)
     const emailReg = email;
     const passReg = passwrd;
-
+    
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, emailReg, passReg)
-      console.log(userCredential)
+      alert('registrasi' + userCredential.user.email+ 'sukses')
+      console.log(userCredential.user)
     } catch (error) {
       console.log(error)
       // showLoginError(error)
     }
 
-    
-      // .then(res => {
-      //   // Signed in 
-      //   // const user = userCredential.user;
-      //   console.log(res)
-      //   // ...
-      // })
-      // .catch((error) => {
-      //   const errorCode = error.code;
-      //   const errorMessage = error.message;
-      //   console.log('err ='+errorCode,errorMessage)
-      // });
   }
 
+  const displayPassword = () => {
+    
+    const inputTarget = document.getElementById('togglePassword').previousElementSibling
+    console.log(document.getElementById('togglePassword'))
+    const type = inputTarget.getAttribute("type") === "password" ? "text" : "password";
+    inputTarget.setAttribute("type", type);
+    document.getElementById('togglePassword').classList.toggle("bi-eye");
+  }
  
 
   return (
@@ -90,13 +83,14 @@ const Register = () => {
           {/* <div id="emailHelp" className="form-text">Masukkan alamat email akan yang didaftarkan</div> */}
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-          <input  onChange={handlepasswrd} type="password" className="form-control" id="exampleInputPassword" placeholder="Ketikkan password yang akan digunakan" name="PasswordReg"/>
+          <label htmlFor="InputPassword" className="form-label">Password</label>
+          <div className='togglewrapper'>
+            <input  onChange={handlepasswrd} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  type="password" className="form-control" id="InputPassword" placeholder="Ketikkan password yang akan digunakan" name="PasswordReg" style={{position:"relative" }}/>
+            <i className="bi bi-eye-slash bi-eye" id="togglePassword" onClick={displayPassword}></i>
+          </div>
+          <p className="form-text">password harus mengandung huruf besar dan angka, dan minimal 8 karakter</p>
         </div>
-        <div className="mb-3">
-          <label htmlFor="confirmationInputPassword" className="form-label">Konfirmasi Password</label>
-          <input  onChange={handleKonfirmpasswrd} type="password" className="form-control" id="confirmationInputPassword" placeholder="Ketik ulang password yang akan digunakan" name="konfirmPasswordReg"/>
-        </div>
+       
         <button onClick={handleRegisterBtn} type="submit" className="btn btn-primary ">Register</button>
       </form>
       <Gap height="20px"/>
