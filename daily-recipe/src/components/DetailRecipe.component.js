@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import Gap from './gap'
 import AddList from './AddList.component';
@@ -10,9 +10,10 @@ const DetailRecipe = () => {
   const [recipeDetail,setRecipeDetail] = useState([]);
   const [ingInstruction,setIngInstruction] = useState([])
   const [instruction,setInstruction] = useState([])
+  const {id} = useParams()
 
   useEffect(() => {   
-     axios.get(url+'/id=62396272e7661aa968b1ce06')
+     axios.get(url+'/id='+id)
       .then(res => {
         setRecipeDetail(res.data)
         // console.log(res.data)
@@ -23,9 +24,9 @@ const DetailRecipe = () => {
         console.log(err);
       })
 
-  },[])
+  },[id])
   
-  console.log('recipeDetail '+recipeDetail)
+  console.log('recipeDetail '+recipeDetail,'recipeId: '+ id)
 
   return (
     <div>
