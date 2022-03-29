@@ -7,6 +7,7 @@ import ListBelanja from './components/ListBelanja.component';
 import MenuBelanja from './components/menuBelanja.component';
 import Login from './components/login.component';
 import Register from './components/Register.component';
+import DetailRecipe from './components/DetailRecipe.component';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/menuBelanja' element={<MenuBelanja/>}/>
           <Route path='/user/login' element={<Login/>}/>
           <Route path='/user/register' element={<Register/>}/>
+          <Route path='/detail/:id' element={<DetailRecipe/>}/>
         </Routes>
         
 

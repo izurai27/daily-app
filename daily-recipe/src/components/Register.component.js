@@ -9,7 +9,7 @@ import { initializeApp } from "firebase/app";
 
 import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword } from "firebase/auth";
 import '../components/register.css';
-
+import displayPassword from '../displayPassword'
 
 
 // Your web app's Firebase configuration
@@ -37,6 +37,7 @@ const Register = () => {
   const [email,setEmail] = useState('')
   const [passwrd,setPasswrd] = useState('')
   
+  
   const handleInputEmail = (e) => {
     setEmail (e.target.value);
     
@@ -53,27 +54,15 @@ const Register = () => {
     
     try {
       const userCredential = await createUserWithEmailAndPassword(auth, emailReg, passReg)
-      alert('registrasi' + userCredential.user.email+ 'sukses')
-      console.log(userCredential.user)
+      console.log(userCredential)
     } catch (error) {
       console.log(error)
       // showLoginError(error)
     }
-
   }
-
-  const displayPassword = () => {
-    
-    const inputTarget = document.getElementById('togglePassword').previousElementSibling
-    console.log(document.getElementById('togglePassword'))
-    const type = inputTarget.getAttribute("type") === "password" ? "text" : "password";
-    inputTarget.setAttribute("type", type);
-    document.getElementById('togglePassword').classList.toggle("bi-eye");
-  }
- 
 
   return (
-    <div className='container'>
+    <div className='container-sm'>
 
       <form className='container-sm'>
         
@@ -86,7 +75,7 @@ const Register = () => {
           <label htmlFor="InputPassword" className="form-label">Password</label>
           <div className='togglewrapper'>
             <input  onChange={handlepasswrd} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  type="password" className="form-control" id="InputPassword" placeholder="Ketikkan password yang akan digunakan" name="PasswordReg" style={{position:"relative" }}/>
-            <i className="bi bi-eye-slash bi-eye" id="togglePassword" onClick={displayPassword}></i>
+            <i className="bi bi-eye-slash" id="togglePassword" onClick={displayPassword}></i>
           </div>
           <p className="form-text">password harus mengandung huruf besar dan angka, dan minimal 8 karakter</p>
         </div>
@@ -96,7 +85,7 @@ const Register = () => {
       <Gap height="20px"/>
       <div>
         <Gap width="4px" height="1px"/>
-        <Link to='/user/register' className='navbar-brand fs-6 ms-2 mt-3'>Ke Halaman Login</Link>
+        <Link to='/user/login' className='navbar-brand fs-6 ms-2 mt-3'>Ke Halaman Login</Link>
       </div>
     </div>
   )
