@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
-import ytimg from '../images/youtube.svg'
 import AddList from './AddList.component';
 import {Link} from 'react-router-dom'
 //command to get data from recipe database//
@@ -36,9 +35,12 @@ const RecipeList = () => {
             <div className="card-body">
               <div className="card-title" style={{fontSize: "1rem", fontWeight:"600"}}>{elemen.title}</div>
               <div className="card-title" style={{fontSize: "14px"}}>Sumber : Devina Hermawan</div>
-              <a href={elemen.ytLink} style={{fontSize: "14px"}} target="_blank" rel="noreferrer noopener"><img src={ytimg} className="img-thumbnail" alt="listbelanjaImg" style={{width:"40px", height:"40px", border:"none"}}/></a>
-              <AddList _id={elemen._id}/>
-              <Link to={"/detail/"+elemen._id}>Lihat resep</Link>
+              <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                <a href={elemen.ytLink} style={{fontSize: "2rem", color:'red'}} target="_blank" rel="noreferrer noopener"><i class="bi bi-youtube"></i></a>
+                <AddList _id={elemen._id}/>
+                <Link to={"/detail/"+elemen._id}>Lihat resep</Link>
+              </div>
+              
             </div>
           </div>
         )    

@@ -8,7 +8,7 @@ const AddList = (props) => {
   }
 
   return (
-    <i class="bi bi-cart-plus" onClick={handleAddList} style={{fontSize: "2rem"}}></i>
+    <i class="bi bi-cart-plus" onClick={handleAddList} style={{fontSize: "2rem", cursor:'pointer'}}></i>
        
   )
 }
