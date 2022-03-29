@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import ytimg from '../images/youtube.svg'
 import Gap from './gap'
+import AddList from './AddList.component';
 
 const url = 'http://localhost:5000/recipes';
 
@@ -54,11 +54,11 @@ const DetailRecipe = () => {
                 <div>Cara Memasak:</div>
                 {instruction.map(elemen => {
                   return(
-                    <div key={elemen.index}>{elemen}</div>
+                    <div>{elemen}</div>
                     )
                 })}
-                <a href={recipeDetail.ytLink} style={{fontSize: "14px"}} target="_blank" rel="noreferrer noopener"><img src={ytimg} className="img-thumbnail" alt="listbelanjaImg" style={{width:"40px", height:"40px", border:"none"}}/></a>
-
+                <a href={recipeDetail.ytLink} style={{fontSize: "2rem", color:'red'}} target="_blank" rel="noreferrer noopener"><i class="bi bi-youtube"></i></a>
+                <AddList _id={recipeDetail._id}/>
               </div>
             </div>
       </div>

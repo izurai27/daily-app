@@ -1,5 +1,5 @@
 import React from 'react'
-import listImg from '../images/listbelanja.svg'
+
 
 const AddList = (props) => {
 
@@ -8,7 +8,8 @@ const AddList = (props) => {
   }
 
   return (
-    <img src={listImg} className="img-thumbnail" alt="listbelanjaImg" style={{width:"35px", height:"35px", border:"none", cursor:"pointer"}} onClick={handleAddList}></img>
+    <i class="bi bi-cart-plus" onClick={handleAddList} style={{fontSize: "2rem"}}></i>
+       
   )
 }
 
