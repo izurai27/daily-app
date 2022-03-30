@@ -3,11 +3,11 @@ let addList = require('../models/addList.model')
 
 router.route('/').get((req,res) => {
   addList.find()
-  .then(recipe => res.json(recipe))
+  .then(addList => res.json(addList))
   .catch(err => res.status (400).json('error :' + err))
 });
 
-//commad to add recipe list
+//commad to add addList list
 router.route('/add').post((req,res)=>{
   
   const userid = req.body.userid;

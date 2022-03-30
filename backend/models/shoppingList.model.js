@@ -9,5 +9,5 @@ const shoppingListSchema = new schema ({
   
 })
 
-const shoppingList = mongoose.model('addList', shoppingListSchema);
+const shoppingList = mongoose.model('shoppingList', shoppingListSchema);
 module.exports = shoppingList;

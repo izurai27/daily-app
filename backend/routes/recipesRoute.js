@@ -61,12 +61,12 @@ router.route('/update/id=:id').post((req,res) => {
     recipe.occasion = req.body.occasion
     recipe.mealtype = req.body.mealtype
     recipe.origin = req.body.origin
-    recipe.ingredientsInstructionSchema = req.body.ingredientsInstructionSchema
+    recipe.ingredientsInstruction = req.body.ingredientsInstruction
 
     recipe.save()
     .then(() => res.json(`recipe id = ${req.params.id} successfully updated`))
     .catch(err => res.status(400).json('error: '+err))
-    })
+  })
 
     .catch(err => res.status(400).json('Error:'+err))
 
