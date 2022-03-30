@@ -1,10 +1,30 @@
 import React from 'react'
-
+import axios from 'axios';
 
 const AddList = (props) => {
 
   const handleAddList = () => {
-    console.log(props._id)
+    
+
+    const addlist = {
+    userid : props.userid,
+    title:props.title,
+    recipeItem : [{
+      recipeId : props.recipeId,
+      ingredients : props.ingredients
+    }], 
+    }
+
+    console.log(addlist)
+    axios.post('http://localhost:5000/addList/add',addlist)
+    .then(res => console.log(res.data));
+    
+
+
+
+
+
+
   }
 
   return (

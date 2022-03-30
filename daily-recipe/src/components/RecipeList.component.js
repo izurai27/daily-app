@@ -37,7 +37,7 @@ const RecipeList = () => {
               <div className="card-title" style={{fontSize: "14px"}}>Sumber : Devina Hermawan</div>
               <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
                 <a href={elemen.ytLink} style={{fontSize: "2rem", color:'red'}} target="_blank" rel="noreferrer noopener"><i class="bi bi-youtube"></i></a>
-                <AddList _id={elemen._id}/>
+                <AddList recipeId={elemen._id} userid='izma' ingredients={elemen.ingredients} title={elemen.title}/>
                 <Link to={"/detail/"+elemen._id}>Lihat resep</Link>
               </div>
               

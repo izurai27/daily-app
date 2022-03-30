@@ -1,9 +1,15 @@
 import React from 'react'
+import RecipeAdded from './RecipeAdded.component'
 
 const ListBelanja = () => {
   
   return (
-    <div>ListBelanja.component</div>
+    <div>
+      <RecipeAdded userid={"izma"}/>
+      <div>ListBelanja.component</div>
+    </div>
+
+    
   )
 }
 

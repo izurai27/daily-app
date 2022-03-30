@@ -3,7 +3,7 @@ const schema = mongoose.Schema;
 
 const addListSchema = new schema ({
   userid : { type: String, require : true},
-  
+  title : { type: String, require : true},
   // portion : {type : Number, require : true},
   // cookingStyle : { type: String, require : true},
   // instruction : [String],

@@ -11,11 +11,12 @@ router.route('/').get((req,res) => {
 router.route('/add').post((req,res)=>{
   
   const userid = req.body.userid;
+  const title = req.body.title;
   const recipeItem = req.body.recipeItem
   
   
   const newAddList = new addList({
-    userid, recipeItem
+    userid,title, recipeItem
   })
 
   newAddList.save()
