@@ -1,36 +1,61 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import axios from 'axios';
 
-const IngredientList = (props) => {
-  // const temp = props.ingredient
-  // const len = props.ingredient.length
-  // // const ing = temp.map(elemen => elemen)
-  // let ingredientCombined = []
-  // for (let i=0 ; i<len ; i++){
-  //   ingredientCombined = [...ingredientCombined,...temp[i]]
-  // }
+const IngredientList = () => {
 
-  // console.log(temp)
+  const [shoppingItem,setShoppingItem] = useState([])
+  
+  const userid = 'izma'
 
-  // const ingredientReduce=[]
-  // ingredientCombined.reduce(function(result, item) {
+  useEffect(() =>  {
     
-  //   if (!result[item.ingredientsName]) {
-  //     result[item.ingredientsName] = { ingredientsName: item.ingredientsName, quantity: 0, measurement:item.measurement };
-  //     ingredientReduce.push(result[item.ingredientsName])
-  //   }
-
-  //   result[item.ingredientsName].quantity += item.quantity;
-  //   // console.log(result)
-  //   // console.log(ingredientReduce)
     
-  //   return result;
+    const sendGetRequest = async () => {
+      try {
+          const resp = await axios.get('http://localhost:5000/shoppingList/userid='+userid);
 
-  // }, {});
+          setShoppingItem(resp.data)
+                    
+      } catch (err) {
+          
+          console.error(err);
+      }
+    };
+  
+  sendGetRequest();
 
-  // console.log(ingredientReduce)
+  },[]);
+  
+  console.log(shoppingItem)
+  function handleChecked (e) {
+    const id = e.target.dataset.id;
+    const value = (e.target.value === false) ? false : true;
+    axios.patch('http://localhost:5000/shoppingList/updateStatus/_id='+id,{"status": !value})
+    .then(res => console.log(res));
+    console.log(value,!value)
+
+
+  }
 
   return (
-    <div>IngredientList</div>
+    <div>
+      <div>IngredientList</div>
+      <button className='btn btn-secondary'>refresh list</button>
+      <div>
+      {/* <ol> */}
+        {shoppingItem.map(element => (
+          <div className="form-check" key={element._id}>
+            {/* {element.userid} */}
+              <input className="form-check-input" type="checkbox" value={element.status} id="flexCheckDefault" data-id={element._id} onChange={handleChecked}/>
+              <label className="form-check-label" htmlFor="flexCheckDefault">
+                  {element.ingredientsName} {element.quantity} {element.measurement} 
+              </label>
+        </div>
+        ))}
+      {/* </ol> */}
+      </div>
+    </div>
+
   )
 }
 

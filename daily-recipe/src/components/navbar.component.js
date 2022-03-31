@@ -20,7 +20,7 @@ const Navbar = () =>{
               <Link to='/list' className='nav-link'>List Belanja</Link>
             </li>
             <li className='navbar-item'>
-              <Link to='/menuBelanja' className='nav-link'>Menu Harian</Link>
+              <Link to='/shoppinglist' className='nav-link'>Shopping List</Link>
             </li>
             
 

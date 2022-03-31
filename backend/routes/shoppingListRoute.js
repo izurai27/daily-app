@@ -47,6 +47,14 @@ router.route('/deleteby/userid=:userid').delete((req,res)=>{
   .catch(err => res.status(400).json('error: '+err))
 })
 
+//command to update status only
+router.route('/updateStatus/_id=:id').patch((req,res) => {
+  shopping.updateOne({ _id: req.params.id }, { status : req.body.status })
+  .then (() => {res.json('item successfully updated');console.log(res)})
+  .catch(err => res.status(400).json('Error:'+err))
+})
+// await Person.updateOne({ name: 'Jean-Luc Picard' }, { ship: 'USS Enterprise' })
+
 //command to update by id
 router.route('/update/userid=:id').post((req,res) => {
   shopping.findById(req.params.id)

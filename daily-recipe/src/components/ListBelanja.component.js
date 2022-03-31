@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import RecipeAdded from './RecipeAdded.component'
 import axios from 'axios'
-import ShoppingList from './ShoppingList.component'
+
 
 const ListBelanja = () => {
   // const [recipeAdded,setrecipeAdded] = useState([])
