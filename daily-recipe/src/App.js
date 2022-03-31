@@ -9,13 +9,14 @@ import Login from './components/login.component';
 import Register from './components/Register.component';
 import DetailRecipe from './components/DetailRecipe.component';
 import ShoppingList from './components/ShoppingList.component'
+import About from './components/about.component';
 
 function App() {
   return (
     <Router>
-      <div className='justify-content-between'>
+      <div>
         <Navbar />
-        <br/>
+        {/* <br/> */}
         <Routes>
           <Route path='/' exact element={<Home/>}/>
           <Route path='/list' element={<ListBelanja/>}/>
@@ -23,6 +24,8 @@ function App() {
           <Route path='/user/login' element={<Login/>}/>
           <Route path='/user/register' element={<Register/>}/>
           <Route path='/detail/:id' element={<DetailRecipe/>}/>
+          <Route path='/about' element={<About/>}/>
+
         </Routes>
         
 
