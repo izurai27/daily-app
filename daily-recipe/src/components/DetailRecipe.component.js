@@ -58,7 +58,7 @@ const DetailRecipe = () => {
                     <div>{elemen}</div>
                     )
                 })}
-                <a href={recipeDetail.ytLink} style={{fontSize: "2rem", color:'red'}} target="_blank" rel="noreferrer noopener"><i class="bi bi-youtube"></i></a>
+                <a href={recipeDetail.ytLink} style={{fontSize: "2rem", color:'red'}} target="_blank" rel="noreferrer noopener"><i className="bi bi-youtube"></i></a>
                 <AddList _id={recipeDetail._id}/>
               </div>
             </div>

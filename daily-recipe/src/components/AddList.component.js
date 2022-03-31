@@ -7,12 +7,11 @@ const AddList = (props) => {
     
 
     const addlist = {
-    userid : props.userid,
-    title:props.title,
-    recipeItem : [{
+      userid : props.userid,
+      title:props.title,
       recipeId : props.recipeId,
       ingredients : props.ingredients
-    }], 
+    
     }
 
     console.log(addlist)
@@ -28,7 +27,7 @@ const AddList = (props) => {
   }
 
   return (
-    <i class="bi bi-cart-plus" onClick={handleAddList} style={{fontSize: "2rem", cursor:'pointer'}}></i>
+    <i className="bi bi-cart-plus" onClick={handleAddList} style={{fontSize: "2rem", cursor:'pointer'}}></i>
        
   )
 }

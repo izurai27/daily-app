@@ -7,16 +7,25 @@ router.route('/').get((req,res) => {
   .catch(err => res.status (400).json('error :' + err))
 });
 
+router.route('/userid=:userid').get((req,res) => {
+  addList.find({"userid":req.params.userid})
+  .then(addList => res.json(addList))
+  .catch(err => res.status (400).json('error :' + err))
+});
+
+
+
 //commad to add addList list
 router.route('/add').post((req,res)=>{
   
   const userid = req.body.userid;
   const title = req.body.title;
-  const recipeItem = req.body.recipeItem
-  
+ 
+  const  recipeId = req.body.recipeId,
+  ingredients = req.body.ingredients
   
   const newAddList = new addList({
-    userid,title, recipeItem
+    userid,title, recipeId, ingredients
   })
 
   newAddList.save()

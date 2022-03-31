@@ -8,20 +8,28 @@ router.route('/').get((req,res) => {
   .catch(err => res.status (400).json('error :' + err))
 });
 
+router.route('/userid=:userid').get((req,res) => {
+  shopping.find({userid : req.params.userid})
+  .then(shopping => res.json(shopping))
+  .catch(err => res.status (400).json('error :' + err))
+});
+
 //command to add shopping
 router.route('/add').post((req,res)=>{
   
   const userid = req.body.userid
-  const ingredientsName= req.body.ingredientsName
+  const ingredientsName = req.body.ingredientsName
   const quantity = req.body.quantity
   const measurement = req.body.measurement
 
+
+  // status = req.body.status
   const newShopping = new shopping({
-    userid, ingredientsName, quantity, measurement
+    userid, ingredientsName,quantity,measurement
   })
 
   newShopping.save()
-  .then(()=> res.json('shopping item added, shopping: '+ title))
+  .then(()=> res.json('shopping item added, shopping: '+ userid))
   .catch(err => res.status(400).json('Error:'+err))
 })
 
@@ -32,16 +40,23 @@ router.route('/id=:id').delete((req,res)=>{
   .catch(err => res.status(400).json('error: '+err))
 })
 
+//delete many by userid
+router.route('/deleteby/userid=:userid').delete((req,res)=>{
+  shopping.deleteMany({userid : req.params.userid})
+  .then(() => res.json('shopping successfully deleted'))
+  .catch(err => res.status(400).json('error: '+err))
+})
+
 //command to update by id
-router.route('/update/id=:id').post((req,res) => {
+router.route('/update/userid=:id').post((req,res) => {
   shopping.findById(req.params.id)
   .then(shopping => {
 
     shopping.userid = req.body.userid
-    shopping.ingredientsName= req.body.ingredientsName
+    shopping.ingredientsName = req.body.ingredientsName
     shopping.quantity = req.body.quantity
     shopping.measurement = req.body.measurement
-    
+    shopping.status = req.body.measurement
 
     shopping.save()
     .then(() => res.json(`shopping id = ${req.params.id} successfully updated`))

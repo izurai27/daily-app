@@ -9,14 +9,15 @@ const addListSchema = new schema ({
   // instruction : [String],
   // source : {type:String, require : true},
   // ytLink : {type:String, require: true},
-  recipeItem : [{
-    recipeId : String,
-    ingredients : [{
-                    ingredientsName: {type: String, require: true} ,
+  recipeId : String,
+  ingredients : [{
+                    ingredientsName: {type: String, require: true, lowercase: true} ,
                     quantity : {type:Number, require:true} ,
                     measurement : {type:String, require: true}
                   }]
-  }], 
+ 
+    
+  
  
   // mealtype : [String], //lauk, sayur, dessert, buah
   // origin: String,

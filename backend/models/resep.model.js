@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const schema = mongoose.Schema;
 
 const detailIngredients = new schema ({
-  ingredientsName: {type: String, require: true} ,
+  ingredientsName: {type: String, require: true, lowercase: true} ,
 	quantity : {type:Number, require:true} ,
 	measurement : {type:String, require: true}
 })
